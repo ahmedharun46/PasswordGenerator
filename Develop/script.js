@@ -2,18 +2,30 @@
 var generateBtn = document.querySelector("#generate");
 var ChosenCharacters = [];
 var passwordLength
-var Characters
 // Write password to the #password input
 function writePassword() {
 var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
 }
 function generatePassword() {
-  passwordLength = window.prompt("Please enter a number 8-128, to vhose how many characters you want in your password");
+ passwordLength = window.prompt("Please enter a number 8-128, to chose how many characters you want in your password");
   window.alert("Your pass word length is " + passwordLength);
+
+  if(Number.isNaN(passwordLength)){
+    window.alert("Alert!");
+    return;
+  }
+  if(passwordLength<8){
+    window.alert("Invalid");
+    return;
+  }
+  if(passwordLength>128){
+    window.alert("Invalid");
+    return;
+  }
 
   var UppercaseLetters = window.confirm("Would you like Uppers Case Letter");
   if (UppercaseLetters) {
@@ -57,9 +69,9 @@ function generatePassword() {
   var SpecialCharacters = window.confirm("Would you like a Special Characters");
   if (SpecialCharacters) {
     window.alert("You choose a Special Character");
-    var SpecialCharacters = ['@', '!', '#', '$', '^', '&', '*', '(', ')'];
+    var SpecialCharacters = ['@', '!', '#', '$', '^', '&', '*'];
     ChosenCharacters.push(...SpecialCharacters);
-    console.log(ChosenCharacters); 1
+    console.log(ChosenCharacters); 
   }
   if (SpecialCharacters === false) {
     window.alert("Did not choose Special Character");
@@ -68,20 +80,17 @@ function generatePassword() {
   //Scramble Characters from the global array
   for (var i = 0; i < passwordLength; i++) {
     var Random = Math.floor(Math.random() * ChosenCharacters.length);
-    //console.log(ChosenCharacters[Random])
-    Characters+=ChosenCharacters[Random]
-    console.log(Characters.length)
-    console.log(passwordLength)
-    if(Characters.length==passwordLength){
-     window.alert("Here is your passwrod" + Characters)
-     console.log("Test")
+    console.log(ChosenCharacters.length);
+  console.log(ChosenCharacters[Random]);
+    console.log(passwordLength);
     }
   }
 }
-}
+
+
 
 //Randomizer()
-//return Characters
+//return ChosenCharacters
 
 
 //if (passwordLength<8){
