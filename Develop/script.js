@@ -1,5 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var ReturnPassword
 var ChosenCharacters = [];
 var passwordLength
 // Write password to the #password input
@@ -56,7 +57,7 @@ function generatePassword() {
   var Numbers = window.confirm("Would you like a Number");
   if (Numbers) {
     window.alert("You choose a Number");
-    var Numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20','21','22','23','24','25','26','27','28','29','30'];
+    var Numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
     ChosenCharacters.push(...Numbers);
     console.log(ChosenCharacters);
 
@@ -77,14 +78,19 @@ function generatePassword() {
     window.alert("Did not choose Special Character");
   }
   function Randomizer() {
+    var ScrambledPassword = ""
   //Scramble Characters from the global array
   for (var i = 0; i < passwordLength; i++) {
     var Random = Math.floor(Math.random() * ChosenCharacters.length);
-    console.log(ChosenCharacters.length);
-  console.log(ChosenCharacters[Random]);
-    console.log(passwordLength);
+  //console.log(ChosenCharacters[Random]);
+    //console.log(passwordLength);
+  ScrambledPassword += ChosenCharacters[Random]
+  console.log(ScrambledPassword);
     }
+      ReturnPassword = ScrambledPassword
   }
+  Randomizer()
+  return ReturnPassword
 }
 
 
